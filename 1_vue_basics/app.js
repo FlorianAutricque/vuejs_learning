@@ -7,6 +7,7 @@ const app = Vue.createApp({
   //this in here will only work in the scopre of what we mounted
   data() {
     return {
+      showBooks: true,
       title: "The final empire",
       //then we put {{title}} in html doc => this is a dynamic variable
       author: "Flo the flo",
@@ -19,6 +20,9 @@ const app = Vue.createApp({
       this.title = "Words of Randiance";
       //we can alos do this if we pass an argument in the function in the html doc
       this.title = title;
+    },
+    toggleShowBooks() {
+      this.showBooks = !this.showBooks;
     },
   },
 });
