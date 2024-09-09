@@ -56,7 +56,11 @@
         <!-- <p>{{title}} - {{author}} - {{age}}</p> -->
         <ul>
           <!-- the second el in the vfor is the array we cycle in, the first item can be call whatever we want -->
-          <li v-for="book in books" :class="{ fav: book.isFav}">
+          <li
+            v-for="book in filteredBooks"
+            @click="handleAddToFav(book)"
+            :class="{ fav: book.isFav}"
+          >
             <!-- we use : to bind  -->
             <img :src="book.img" :alt="book.title" />
             <h3>{{book.title}}</h3>
