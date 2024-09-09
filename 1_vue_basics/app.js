@@ -7,19 +7,23 @@ const app = Vue.createApp({
   //this in here will only work in the scopre of what we mounted
   data() {
     return {
+      url: "https://moviesphere-flo.netlify.app/",
       showBooks: true,
       books: [
         {
           title: "name of the wind",
           author: "Patrick Sebastien",
+          img: "assets/plutus4.webp",
         },
         {
           title: "The way the wind",
           author: "Patrick Fiori",
+          img: "assets/plutus5.webp",
         },
         {
           title: "The wind of the way",
           author: "Patrick Bruel",
+          img: "assets/plutus6.webp",
         },
       ],
       // title: "The final empire",
