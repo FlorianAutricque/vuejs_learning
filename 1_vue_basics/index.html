@@ -22,7 +22,14 @@
     <div id="app">
       <!-- <h2>I am a template</h2> -->
       <div v-if="showBooks">
-        <p>{{title}} - {{author}} - {{age}}</p>
+        <!-- <p>{{title}} - {{author}} - {{age}}</p> -->
+        <ul>
+          <!-- the second el in the vfor is the array we cycle in, the first item can be call whatever we want -->
+          <li v-for="book in books">
+            <h3>{{book.title}}</h3>
+            <p>{{book.author}}</p>
+          </li>
+        </ul>
       </div>
 
       <button @click="toggleShowBooks">
@@ -30,14 +37,15 @@
         <!-- <span v-if="!showBooks">Show Books</span> -->
         <span v-else>Show Books</span>
       </button>
+
       <!-- This is added or removed from the DOM -->
       <!-- <div v-show="showBooks">Currently showing books</div> -->
 
       <!-- MOUSE EVENTS -->
-      <div class="box" @mouseover="handleEvent($event, 5)">Mouseover</div>
+      <!-- <div class="box" @mouseover="handleEvent($event, 5)">Mouseover</div>
       <div class="box" @mouseleave="handleEvent">Mouseleave</div>
       <div class="box" @dblclick="handleEvent">Double click</div>
-      <div class="box" @mousemove="handleMouseMove">position - {{x}} {{y}}</div>
+      <div class="box" @mousemove="handleMouseMove">position - {{x}} {{y}}</div> -->
 
       <!-- EVENTS -->
       <!-- <button v-on:click="age++">Increase age</button>

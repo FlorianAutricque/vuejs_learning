@@ -8,12 +8,26 @@ const app = Vue.createApp({
   data() {
     return {
       showBooks: true,
-      title: "The final empire",
-      //then we put {{title}} in html doc => this is a dynamic variable
-      author: "Flo the flo",
-      age: "203",
-      x: 0,
-      y: 0,
+      books: [
+        {
+          title: "name of the wind",
+          author: "Patrick Sebastien",
+        },
+        {
+          title: "The way the wind",
+          author: "Patrick Fiori",
+        },
+        {
+          title: "The wind of the way",
+          author: "Patrick Bruel",
+        },
+      ],
+      // title: "The final empire",
+      // //then we put {{title}} in html doc => this is a dynamic variable
+      // author: "Flo the flo",
+      // age: "203",
+      // x: 0,
+      // y: 0,
     };
   },
   methods: {
