@@ -4,8 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning vue</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
   </head>
   <body>
     <h1>hello</h1>
+
+    <div id="app">
+      <!-- <h2>I am a template</h2> -->
+      <p>{{title}} - {{author}} - {{age}}</p>
+
+      <button v-on:click="age++">Increase age</button>
+      <button v-on:click="age--">Decrease age</button>
+
+      <button @click="changeTitle">change</button>
+      <button @click="changeTitle('name book')">change</button>
+    </div>
+
+    <script src="app.js"></script>
   </body>
 </html>
