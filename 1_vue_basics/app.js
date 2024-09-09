@@ -12,6 +12,8 @@ const app = Vue.createApp({
       //then we put {{title}} in html doc => this is a dynamic variable
       author: "Flo the flo",
       age: "203",
+      x: 0,
+      y: 0,
     };
   },
   methods: {
@@ -23,6 +25,16 @@ const app = Vue.createApp({
     },
     toggleShowBooks() {
       this.showBooks = !this.showBooks;
+    },
+    handleEvent(e, data) {
+      console.log(e, e.type);
+      if (data) {
+        console.log(data);
+      }
+    },
+    handleMouseMove(e) {
+      this.x = e.offsetX;
+      this.y = e.offsetY;
     },
   },
 });
