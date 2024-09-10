@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <div v-if="showModal">
+    <teleport to=".modals" v-if="showModal">
       <!-- here @close is the event trigger from the child comp with emit -->
       <!-- <Modal :header="header" :text="text" theme="sale" @close="toggleModal" /> -->
       <Modal theme="sale" @close="toggleModal">
@@ -17,9 +17,9 @@
           <a href="#">More infos</a>
         </template>
       </Modal>
-    </div>
+    </teleport>
 
-    <div v-if="showModal2">
+    <teleport to=".modals" v-if="showModal2">
       <Modal @close="toggleModalTwo">
         <template v-slot:modal2>
           <h1>Sign up to the news later</h1>
@@ -31,7 +31,7 @@
           <a href="#">More infos</a>
         </template>
       </Modal>
-    </div>
+    </teleport>
     <p>Welcome...</p>
     <!-- shift here is a modifier. To modify the event listener -->
     <button @click.shift="toggleModal">Show modal (shift)</button>
@@ -76,7 +76,8 @@ export default {
 </script>
 
 <style>
-#app {
+#app,
+.modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
