@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <Modal />
+    <Modal :header="header" :text="text" theme="sale" />
 
     <!-- HOW TO USE REFS -->
     <!-- <input type="text" ref="name" />
@@ -17,6 +17,8 @@ export default {
   data() {
     return {
       title: "My first Vue app",
+      header: "Sign up for the Giveaway!",
+      text: "Sign up",
     };
   },
   components: { Modal },
