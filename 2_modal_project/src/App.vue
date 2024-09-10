@@ -1,7 +1,12 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <Modal :header="header" :text="text" theme="sale" />
+    <div v-if="showModal">
+      <!-- here @close is the event trigger from the child comp with emit -->
+      <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
+    </div>
+    <p>Welcome...</p>
+    <button @click="toggleModal">Show modal</button>
 
     <!-- HOW TO USE REFS -->
     <!-- <input type="text" ref="name" />
@@ -19,10 +24,14 @@ export default {
       title: "My first Vue app",
       header: "Sign up for the Giveaway!",
       text: "Sign up",
+      showModal: false,
     };
   },
   components: { Modal },
   methods: {
+    toggleModal() {
+      this.showModal = !this.showModal;
+    },
     //HOW TO USE REFS
     // handleClick() {
     //   console.log(this.$refs.name);
