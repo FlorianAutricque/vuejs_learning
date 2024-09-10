@@ -6,7 +6,8 @@
       <Modal :header="header" :text="text" theme="sale" @close="toggleModal" />
     </div>
     <p>Welcome...</p>
-    <button @click="toggleModal">Show modal</button>
+    <!-- shift here is a modifier. To modify the event listener -->
+    <button @click.shift="toggleModal">Show modal (shift)</button>
 
     <!-- HOW TO USE REFS -->
     <!-- <input type="text" ref="name" />
