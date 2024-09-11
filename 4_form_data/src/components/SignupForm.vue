@@ -1,12 +1,28 @@
 <template>
-  <form>
-    <label> Email: </label>
-    <input type="email" required />
-  </form>
+  <div>
+    <form>
+      <!-- v-modal => 2 way data binding. From input to data -->
+      <label> Email: </label>
+      <input type="email" required v-model="email" />
+
+      <label> Password: </label>
+      <input type="password" required v-model="password" />
+    </form>
+
+    <p>Email: {{ email }}</p>
+    <p>Password: {{ password }}</p>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+};
 </script>
 
 <style>
