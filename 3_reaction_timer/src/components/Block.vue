@@ -1,5 +1,5 @@
 <template>
-  <div class="block" v-if="showBlock">Click me</div>
+  <div class="block" v-if="showBlock" @click="stopTimer">Click me</div>
 </template>
 
 <script>
@@ -8,6 +8,8 @@ export default {
   data() {
     return {
       showBlock: false,
+      timer: null,
+      reactionTime: 0,
     };
   },
   // hooks to fire a code a different stage
@@ -15,6 +17,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.showBlock = true;
+      this.startTimer();
     }, this.delay);
   },
 
@@ -24,6 +27,19 @@ export default {
   // unmounted() {
   //   console.log("comp unmounted");
   // },
+
+  methods: {
+    startTimer() {
+      this.timer = setInterval(() => {
+        this.reactionTime += 10;
+      }, 10);
+    },
+    stopTimer() {
+      this.timer = clearInterval(this.timer);
+      console.log(this.reactionTime);
+      this.$emit("end", this.reactionTime);
+    },
+  },
 };
 </script>
 
