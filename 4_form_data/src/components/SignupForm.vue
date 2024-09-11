@@ -7,10 +7,40 @@
 
       <label> Password: </label>
       <input type="password" required v-model="password" />
+
+      <label>Role:</label>
+      <select v-model="role">
+        <option value="developer">Web developer</option>
+        <option value="designer">Web designer</option>
+      </select>
+
+      <label>Skills:</label>
+      <input type="text" v-model="tempSkill" @keyup="addSkill" />
+
+      <div
+        v-for="skill in skills"
+        :key="skill"
+        class="pill"
+        :class="{ 'pill-selected': selectedSkill === skill }"
+        @click="selectSkill(skill)"
+      >
+        {{ skill }}
+      </div>
+
+      <div v-if="skills.length !== 0" class="container-btn">
+        <button @click="deleteSkill" class="btn-delete">Delete skill</button>
+      </div>
+
+      <div class="terms">
+        <input type="checkbox" required v-model="terms" />
+        <label>accept terms and conditions</label>
+      </div>
     </form>
 
     <p>Email: {{ email }}</p>
     <p>Password: {{ password }}</p>
+    <p>role: {{ role }}</p>
+    <p>terms: {{ terms }}</p>
   </div>
 </template>
 
@@ -20,7 +50,30 @@ export default {
     return {
       email: "",
       password: "",
+      role: "",
+      terms: false,
+      tempSkill: "",
+      skills: [],
+      selectedSkill: null,
     };
+  },
+  methods: {
+    addSkill(e) {
+      if (e.key === "Enter" && this.tempSkill) {
+        if (!this.skills.includes(this.tempSkill)) {
+          this.skills.push(this.tempSkill);
+        }
+        this.tempSkill = "";
+      }
+    },
+    selectSkill(skill) {
+      this.selectedSkill = skill;
+    },
+    deleteSkill(e) {
+      e.preventDefault();
+      this.skills = this.skills.filter((skill) => skill !== this.selectedSkill);
+      this.selectedSkill = null;
+    },
   },
 };
 </script>
@@ -51,5 +104,53 @@ input {
   border: none;
   border-bottom: 1px solid #ddd;
   color: #555;
+}
+input,
+select {
+  display: block;
+  padding: 10px 6px;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+}
+input[type="checkbox"] {
+  display: inline-block;
+  width: 16px;
+  margin: 0 10px 0 0;
+  position: relative;
+  top: 2px;
+}
+.pill {
+  display: inline-block;
+  margin: 20px 10px 0 0;
+  padding: 6px 12px;
+  background: #eee;
+  border-radius: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #777;
+  cursor: pointer;
+}
+.pill-selected {
+  background: #3b3a3a !important;
+}
+.container-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-delete {
+  margin: 20px 10px 0 0;
+  padding: 6px 12px;
+  background: #eee;
+  border-radius: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #777;
+  cursor: pointer;
 }
 </style>
