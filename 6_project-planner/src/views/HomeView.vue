@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="home">home</div>
     <div v-if="projects.length">
       <div v-for="project in projects" :key="project.id">
         <SingleProject
