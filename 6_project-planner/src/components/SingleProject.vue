@@ -4,6 +4,12 @@
       <h3 @click="handleShowDetails">
         {{ project.title }}
       </h3>
+
+      <div class="icons">
+        <span class="material-icons">edit</span>
+        <span @click="deleteItem" class="material-icons">delete</span>
+        <span class="material-icons">done</span>
+      </div>
     </div>
     <div v-if="showDetails" class="details">
       <p>{{ project.details }}</p>
@@ -19,7 +25,17 @@ export default {
       showDetails: false,
     };
   },
+  computed: {
+    uri() {
+      return "http://localhost:3000/projects/" + this.project.id;
+    },
+  },
   methods: {
+    deleteItem() {
+      fetch(this.uri, { method: "DELETE" })
+        .then(() => this.$emit("delete", this.project.id))
+        .catch((err) => console.log(err));
+    },
     handleShowDetails() {
       this.showDetails = !this.showDetails;
     },
@@ -38,5 +54,19 @@ export default {
 }
 h3 {
   cursor: pointer;
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.material-icons {
+  font-size: 24px;
+  margin-left: 10px;
+  color: #bbb;
+  cursor: pointer;
+}
+.material-icons:hover {
+  color: #777;
 }
 </style>
