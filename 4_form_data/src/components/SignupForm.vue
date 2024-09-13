@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="handleSubmit">
-      <!-- v-modal => 2 way data binding. From input to data -->
+      <!-- v-model => 2 way data binding. From input to data -->
       <label> Email: </label>
       <input type="email" required v-model="email" />
 
@@ -70,7 +70,7 @@ export default {
     };
   },
   methods: {
-    addSkill(e) {
+    addSkill() {
       if (!this.skills.includes(this.tempSkill)) {
         this.skills.push(this.tempSkill);
       }
