@@ -14,7 +14,9 @@ const routes = [
   {
     path: "/about",
     name: "About",
-    component: About,
+    //LAZY LOADING FOR BETTER EFFICIENCY
+    component: () => import("../views/AboutView.vue"),
+    // component: About,
   },
   {
     path: "/jobs",
