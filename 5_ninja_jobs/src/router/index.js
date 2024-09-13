@@ -2,22 +2,28 @@ import { createRouter, createWebHistory } from "vue-router";
 import About from "../views/AboutView.vue";
 import HomeView from "../views/HomeView.vue";
 import Jobs from "../views/jobs/Jobs.vue";
+import JobsDetails from "@/views/jobs/JobsDetails.vue";
 
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "Home",
     component: HomeView,
   },
   {
     path: "/about",
-    name: "about",
+    name: "About",
     component: About,
   },
   {
     path: "/jobs",
-    name: "jobs",
+    name: "Jobs",
     component: Jobs,
+  },
+  {
+    path: "/jobs/:id",
+    name: "JobsDetails",
+    component: JobsDetails,
   },
 ];
 
