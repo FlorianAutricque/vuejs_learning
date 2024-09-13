@@ -1,13 +1,33 @@
 <template>
   <div>
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link :to="{ name: 'About' }">About</router-link> |
-      <router-link :to="{ name: 'Jobs' }">Jobs</router-link>
-    </nav>
+    <Navbar />
+    <button @click="redirect">Redirect</button>
+    <button @click="back">Go back</button>
+    <button @click="forward">Go forward</button>
+
     <router-view />
   </div>
 </template>
+
+<script>
+import Navbar from "./components/Navbar.vue";
+
+export default {
+  components: { Navbar },
+  methods: {
+    redirect() {
+      this.$router.push({ name: "Home" });
+    },
+    back() {
+      //router is to do something. route is to get the infos from url for example
+      this.$router.go(-1);
+    },
+    forward() {
+      this.$router.go(1);
+    },
+  },
+};
+</script>
 
 <style>
 #app {
@@ -18,16 +38,10 @@
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+button {
+  margin: 0 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
 }
 </style>
