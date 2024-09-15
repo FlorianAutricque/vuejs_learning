@@ -1,5 +1,5 @@
 <template>
-  <form @submi.prevent="handleSubmit">
+  <form @submit.prevent="handleSubmit">
     <label>Title:</label>
     <input type="text" required v-model="title" />
     <label>Details:</label>
@@ -17,7 +17,22 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {},
+    handleSubmit() {
+      let project = {
+        title: this.title,
+        details: this.details,
+        complete: false,
+      };
+      fetch("http://localhost:3000/projects", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(project),
+      })
+        .then(() => {
+          this.$router.push("/");
+        })
+        .catch((err) => console.log(err.message));
+    },
   },
 };
 </script>
