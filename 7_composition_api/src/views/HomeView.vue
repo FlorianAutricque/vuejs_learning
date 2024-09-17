@@ -7,6 +7,8 @@
 
 export default {
   name: "HomeView",
-  components: {},
+setup() {
+
+}
 };
 </script>
