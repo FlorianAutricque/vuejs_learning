@@ -1,14 +1,29 @@
 <template>
-  <div class="home">hi</div>
+  <div class="home">
+    <h1>Home</h1>
+    <p>My name is {{ name }} and my age is {{ age }}</p>
+    <button @click="handleClick">Click me</button>
+    <button @click="age++">Add age</button>
+
+    <input type="text" v-model="name" />
+  </div>
 </template>
 
 <script>
-// @ is an alias to /
-
+import { ref } from "vue";
 export default {
   name: "HomeView",
-setup() {
+  setup() {
+    //this are not reactive variables (whitout ref), they wont update in the template like when we were using in the data() function
 
-}
+    const name = ref("flo");
+    const age = ref(30);
+
+    const handleClick = () => {
+      name.value = "luigi";
+    };
+
+    return { name, age, handleClick };
+  },
 };
 </script>
