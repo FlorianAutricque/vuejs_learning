@@ -23,7 +23,8 @@
     <button @click="handleClick">Stop watch</button> -->
 
     <h2>PROPS</h2>
-    <PostList :posts="posts" />
+    <PostList v-if="showPosts" :posts="posts" />
+    <button @click="showPosts = !showPosts">Toggle posts</button>
   </div>
 </template>
 
@@ -92,8 +93,9 @@ export default {
       },
       { title: "Top 5 css tips", body: "lorem", id: 2 },
     ]);
+    const showPosts = ref(true);
 
-    return { posts };
+    return { posts, showPosts };
     // return { names, search, matchingNames, handleClick };
   },
 };
