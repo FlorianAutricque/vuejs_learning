@@ -15,19 +15,24 @@
     <p>{{ ninjaTwo.name }} - {{ ninjaTwo.age }}</p>
     <button @click="updateNinjaTwo">update ninja two</button> -->
 
-    <h2>COMPUTED</h2>
+    <!-- <h2>COMPUTED</h2>
     <input type="text" v-model="search" />
     <p>search term = {{ search }}</p>
     <div v-for="name in matchingNames" :key="name">{{ name }}</div>
 
-    <button @click="handleClick">Stop watch</button>
+    <button @click="handleClick">Stop watch</button> -->
+
+    <h2>PROPS</h2>
+    <PostList :posts="posts" />
   </div>
 </template>
 
 <script>
+import PostList from "@/components/PostList.vue";
 import { ref, reactive, computed, watch, watchEffect } from "vue";
 export default {
   name: "HomeView",
+  components: { PostList },
   setup() {
     //this are not reactive variables (whitout ref), they wont update in the template like when we were using in the data() function
 
@@ -56,29 +61,40 @@ export default {
     // return { ninjaOne, updateNinjaOne, ninjaTwo, updateNinjaTwo };
 
     //COMPUTED
-    const search = ref("");
-    const names = ref(["mario", "luigi", "toad", "bowser", "koopa", "peach"]);
+    // const search = ref("");
+    // const names = ref(["mario", "luigi", "toad", "bowser", "koopa", "peach"]);
 
-    const matchingNames = computed(() => {
-      return names.value.filter((name) => name.includes(search.value));
-    });
+    // const matchingNames = computed(() => {
+    //   return names.value.filter((name) => name.includes(search.value));
+    // });
 
     //WATCH
 
-    const stopWatch = watch(search, () => {
-      console.log("watch fn");
-    });
+    // const stopWatch = watch(search, () => {
+    //   console.log("watch fn");
+    // });
 
-    const stopEffect = watchEffect(() => {
-      console.log("watcheffect fn");
-    });
+    // const stopEffect = watchEffect(() => {
+    //   console.log("watcheffect fn");
+    // });
 
-    const handleClick = () => {
-      stopWatch();
-      stopEffect();
-    };
+    // const handleClick = () => {
+    //   stopWatch();
+    //   stopEffect();
+    // };
 
-    return { names, search, matchingNames, handleClick };
+    //PROPS
+    const posts = ref([
+      {
+        title: "welcome to the blog",
+        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, autem! Quis perferendis consectetur eum recusandae, quia sapiente assumenda laboriosam tempora illo adipisci quaerat maxime doloribus voluptatibus eius ipsum illum nam harum cumque ea ducimus odit eos rem debitis. Commodi voluptatibus ullam repudiandae! Facere eos similique ut quasi itaque autem, quae ipsum impedit doloremque eveniet unde quo officiis animi ad dolore quos, error harum hic doloribus id! Nobis officia nisi officiis eos, asperiores inventore rerum impedit nihil nesciunt voluptatem a, blanditiis corrupti atque, hic veritatis deserunt eum? Culpa, repudiandae perspiciatis dolorem voluptatibus fugiat placeat, quidem at maxime nemo repellendus eligendi cum.",
+        id: 1,
+      },
+      { title: "Top 5 css tips", body: "lorem", id: 2 },
+    ]);
+
+    return { posts };
+    // return { names, search, matchingNames, handleClick };
   },
 };
 </script>
