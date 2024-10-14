@@ -16,8 +16,8 @@ export default {
   props: ["posts"],
   components: { SinglePost },
   setup(props) {
-    onMounted(() => console.log("comp mounted"));
-    onUnmounted(() => console.log("comp unmounted"));
+    // onMounted(() => console.log("comp mounted"));
+    // onUnmounted(() => console.log("comp unmounted"));
   },
 };
 </script>
